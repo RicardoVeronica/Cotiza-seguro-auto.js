@@ -2,8 +2,30 @@ document.addEventListener("DOMContentLoaded", () => {
   UserInterface.prototype.fullYearOption();
 });
 
+document.addEventListener("click", (e) => {
+  if (e.target.matches("form button")) {
+    quoteInsurance(e);
+  }
+});
+
+function quoteInsurance(e) {
+  e.preventDefault();
+
+  // Read brand
+  const brandSelected = document.getElementById("marca").value;
+  // Read year
+  const yearSelected = document.getElementById("year").value;
+  // Read type
+  const typeSelected = document.querySelector("input[name='tipo']:checked")
+    .value;
+
+  if (brandSelected === "" || yearSelected === "" || typeSelected === "")
+    console.log(false);
+  else console.log(true);
+}
+
 // Construct
-function Secure(brand, year, type) {
+function Insurance(brand, year, type) {
   this.brand = brand;
   this.year = year;
   this.type = type;
