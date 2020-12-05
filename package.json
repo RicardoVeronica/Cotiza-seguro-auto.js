@@ -1,0 +1,24 @@
+{
+  "name": "cotiza-seguro-auto",
+  "version": "1.0.0",
+  "description": "Cotizador de seguros para autos",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RicardoVeronica/Cotiza-seguro-auto.js.git"
+  },
+  "author": "ricardoveronica",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RicardoVeronica/Cotiza-seguro-auto.js/issues"
+  },
+  "homepage": "https://github.com/RicardoVeronica/Cotiza-seguro-auto.js#readme",
+  "dependencies": {
+    "webpack": "^4.26.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
+  }
+}
