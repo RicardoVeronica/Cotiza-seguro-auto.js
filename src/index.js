@@ -71,6 +71,34 @@ UserInterface.prototype.showMessage = (msg, type) => {
   }, 2500);
 };
 
+UserInterface.prototype.showResult = (insurance, total) => {
+  const resultDiv = document.getElementById("resultado");
+  let { brand, year, type } = insurance;
+
+  if (brand === "1") brand = "Americano";
+  if (brand === "2") brand = "Asiatico";
+  if (brand === "3") brand = "Europeo";
+
+  const div = document.createElement("div");
+  div.classList.add("mt-10");
+  div.innerHTML = `
+    <p class="header">Tu resumen</p>
+    <p class="font-bold">Brand: <span class="font-normal">${brand}</span></p>
+    <p class="font-bold">Year: <span class="font-normal">${year}</span></p>
+    <p class="font-bold">Insurance: <span class="font-normal capitalize">${type}</span></p>
+    <p class="font-bold">Total: <span class="font-normal">$${total}</span></p>
+  `;
+
+  // shows spinner
+  const spinner = document.getElementById("cargando");
+  spinner.style.display = "block";
+
+  setTimeout(() => {
+    spinner.style.display = "none";
+    resultDiv.appendChild(div);
+  }, 2500);
+};
+
 // Instances
 const ui = new UserInterface();
 
@@ -103,6 +131,14 @@ function readUserInfo(e) {
 
   ui.showMessage("Cotizando...", "correcto");
 
+  // remove previous quoteInsurance
+  const previousQuotes = document.querySelector("#resultado div");
+  if (previousQuotes != null) {
+    previousQuotes.remove();
+  }
+
   const insurance = new Insurance(brandSelected, yearSelected, typeSelected);
-  insurance.quoteInsurance();
+  const total = insurance.quoteInsurance();
+
+  ui.showResult(insurance, total);
 }
